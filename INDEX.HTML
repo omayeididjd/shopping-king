@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping King | متجر شوبينج كينج لشحن الألعاب والبطاقات</title>
+    <style>
+        :root {
+            --bg-dark: #080a0f;
+            --card-bg: #10141d;
+            --card-hover: #161c28;
+            --primary-green: #00FF66;
+            --primary-blue: #00A8FF;
+            --text-main: #FFFFFF;
+            --text-sub: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        header {
+            background: rgba(16, 20, 29, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        .hero {
+            padding: 70px 20px 50px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 255, 102, 0.12), transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 0 25px rgba(0, 255, 102, 0.3);
+        }
+
+        .hero p {
+            color: var(--text-sub);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-green {
+            background: var(--primary-green);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 255, 102, 0.3);
+        }
+
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 102, 0.5);
+        }
+
+        .order-box {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-green);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.15);
+        }
+
+        .order-box h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-green);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: #0b0f19;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-green);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin: 60px 0 35px;
+            color: #fff;
+        }
+
+        .section-title span {
+            color: var(--primary-green);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 25px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-green);
+            background: var(--card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 102, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .price-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .price-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.08);
+            color: var(--text-sub);
+            font-size: 0.98rem;
+        }
+
+        .price-list li strong {
+            color: var(--primary-green);
+            font-size: 1.05rem;
+        }
+
+        .note-tag {
+            font-size: 0.82rem;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .info-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; }
+            nav { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">👑 SHOPPING <span>KING3</span></div>
+        <nav>
+            <a href="#interactive-order">نموذج الطلب</a>
+            <a href="#services">كافة العروض</a>
+            <a href="#payment">طرق الدفع</a>
+            <a href="#delivery">التوصيل</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>👑 متجر SHOPPING KING3 👑</h1>
+        <p>شحن ألعاب وبطاقات مضمونه 100% | تنفيذ فوري خلال دقائق | توصيل لكافة محافظات الأردن</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/962781258255" target="_blank" class="btn btn-whatsapp">
+                💬 تواصل عبر الواتساب: 0781258255
+            </a>
+            <a href="#interactive-order" class="btn btn-green">
+                🛒 اطلب الآن مباشرة
+            </a>
+        </div>
+    </section>
+
+    <div class="container" id="interactive-order">
+        <div class="order-box">
+            <h2>⚡ نموذج الطلب السريع والآلي</h2>
+            
+            <div class="form-group">
+                <label>🎮 اختر الخدمة أو اللعبة:</label>
+                <select id="gameSelect" class="form-control" onchange="updatePackages()">
+                    <option value="">-- اختر اللعبة / الخدمة --</option>
+                    <option value="Roblox">روبوكس (Roblox)</option>
+                    <option value="FortniteVB">فورتنايت - فيبوكس (V-Bucks)</option>
+                    <option value="FortniteGifts">فورتنايت - هدايا وباقات (Gifts & Crew)</option>
+                    <option value="Valorant">فالورانت (Valorant VP) - سيرفر أوربي / شرق أوسط</option>
+                    <option value="PUBGGlobal">ببجي العالمية (PUBG Global UC)</option>
+                    <option value="PUBGKR">ببجي الكورية (PUBG KR UC)</option>
+                    <option value="PUBGVN">ببجي الفيتنامية (PUBG VN UC)</option>
+                    <option value="FreeFire">فري فاير (Free Fire Gems)</option>
+                    <option value="BrawlStars">براول ستارز (Brawl Stars Gems)</option>
+                    <option value="ClashRoyale">كلاش رويال (Clash Royale Gems)</option>
+                    <option value="ClashOfClans">كلاش أوف كلانس (Clash of Clans Gems)</option>
+                    <option value="TikTok">عملات تيك توك (TikTok Coins)</option>
+                    <option value="Genshin">قنشن امباكت (Genshin Impact)</option>
+                    <option value="MarvelRivals">مارفل رايفلز (Marvel Rivals)</option>
+                    <option value="PSN_SA">ستور بلايستيشن سعودي (PSN Saudi)</option>
+                    <option value="PSN_AE">ستور بلايستيشن إماراتي (PSN UAE)</option>
+                    <option value="PSN_US">ستور بلايستيشن أمريكي (PSN US)</option>
+                    <option value="PSN_UK">ستور بلايستيشن بريطاني (PSN UK)</option>
+                    <option value="PSPlus_US">اشتراكات بلس أمريكي (PS Plus US)</option>
+                    <option value="PSPlus_SA">اشتراكات بلس سعودي (PS Plus SA)</option>
+                    <option value="PSPlus_AE">اشتراكات بلس إماراتي (PS Plus AE)</option>
+                    <option value="iTunes_US">أيتونز أمريكي (iTunes US)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📋 اختر الفئة / الكمية المطلوب شحنها:</label>
+                <select id="packageSelect" class="form-control">
+                    <option value="">-- يرجى اختيار اللعبة أولاً --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>👤 اسم الحساب / الـ ID / الايدي المطلوب الشحن له:</label>
+                <input type="text" id="accountId" class="form-control" placeholder="أدخل ID اللعبة أو يوزر الحساب هنا">
+            </div>
+
+            <button onclick="sendWhatsAppOrder()" class="btn btn-whatsapp" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 14px;">
+                📲 إرسال الطلب عبر الواتساب فوراً
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="services">
+        <h2 class="section-title">جميع <span>عروض وخدمات المتجر</span> الكاملة</h2>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🎲 عروض عملات روبوكس (ROBOX)</div></div>
+                    <ul class="price-list">
+                        <li><span>500 Robux</span> <strong>5 JD</strong></li>
+                        <li><span>1000 Robux</span> <strong>8 JD</strong></li>
+                        <li><span>2100 Robux</span> <strong>16 JD</strong></li>
+                        <li><span>2650 Robux</span> <strong>20 JD</strong></li>
+                        <li><span>5400 Robux</span> <strong>37 JD</strong></li>
+                        <li><span>6800 Robux</span> <strong>45 JD</strong></li>
+                        <li><span>11200 Robux</span> <strong>70 JD</strong></li>
+                        <li><span>13100 Robux</span> <strong>78 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">⚡ عروض الفيبوكس (Fortnite V-Bucks)</div></div>
+                    <ul class="price-list">
+                        <li><span>1000 VB</span> <strong>5.50 JD</strong></li>
+                        <li><span>2800 VB</span> <strong>14 JD</strong></li>
+                        <li><span>5000 VB</span> <strong>20 JD</strong></li>
+                        <li><span>7800 VB</span> <strong>33 JD</strong></li>
+                        <li><span>10000 VB</span> <strong>40 JD</strong></li>
+                        <li><span>13500 VB</span> <strong>46 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🎁 هدايا وباقات فورتنايت (Gifts & Crew)</div></div>
+                    <div class="note-tag">إضافة حسابات الهدايا قبل طلبك بيومين: SHESHKO A / B / C</div>
+                    <ul class="price-list">
+                        <li><span>500 VB (هدية)</span> <strong>3 JD</strong></li>
+                        <li><span>800 VB (هدية)</span> <strong>4 JD</strong></li>
+                        <li><span>1200 VB (هدية)</span> <strong>6 JD</strong></li>
+                        <li><span>1500 VB (هدية)</span> <strong>7 JD</strong></li>
+                        <li><span>1800 VB (هدية)</span> <strong>8 JD</strong></li>
+                        <li><span>2000 VB (هدية)</span> <strong>9 JD</strong></li>
+                        <li><span>2500 VB (هدية)</span> <strong>12 JD</strong></li>
+                        <li><span>باتل باس (Battle Pass)</span> <strong>5.50 JD</strong></li>
+                        <li><span>حزمة الكرو (Fortnite Crew)</span> <strong>5 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🎯 نقاط فالورانت (Valorant VP)</div></div>
+                    <div class="note-tag">شحن كود يستلم للريجونات الأوروبية والشرق الأوسط</div>
+                    <ul class="price-list">
+                        <li><span>475 VP</span> <strong>4 JD</strong></li>
+                        <li><span>1000 VP</span> <strong>8 JD</strong></li>
+                        <li><span>2050 VP</span> <strong>15 JD</strong></li>
+                        <li><span>3650 VP</span> <strong>26 JD</strong></li>
+                        <li><span>5350 VP</span> <strong>37 JD</strong></li>
+                        <li><span>11000 VP</span> <strong>71 JD</strong></li>
+                        <li><span>14650 VP</span> <strong>97 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🪖 شدات ببجي العالمية (PUBG UC)</div></div>
+                    <ul class="price-list">
+                        <li><span>355 UC</span> <strong>4 JD</strong></li>
+                        <li><span>720 UC</span> <strong>7.5 JD</strong></li>
+                        <li><span>1950 UC</span> <strong>18 JD</strong></li>
+                        <li><span>3850 UC</span> <strong>33 JD</strong></li>
+                        <li><span>8100 UC</span> <strong>63 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🇰🇷 شدات ببجي الكورية (PUBG KR)</div></div>
+                    <ul class="price-list">
+                        <li><span>60 UC</span> <strong>1 JD</strong></li>
+                        <li><span>190 UC</span> <strong>3 JD</strong></li>
+                        <li><span>660 UC</span> <strong>8 JD</strong></li>
+                        <li><span>1800 UC</span> <strong>20 JD</strong></li>
+                        <li><span>3850 UC</span> <strong>38 JD</strong></li>
+                        <li><span>8100 UC</span> <strong>72 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🇻🇳 شدات ببجي الفيتنامية (PUBG VN)</div></div>
+                    <ul class="price-list">
+                        <li><span>82 UC</span> <strong>1.5 JD</strong></li>
+                        <li><span>194 UC</span> <strong>3 JD</strong></li>
+                        <li><span>400 UC</span> <strong>5 JD</strong></li>
+                        <li><span>854 UC</span> <strong>9 JD</strong></li>
+                        <li><span>2111 UC</span> <strong>21 JD</strong></li>
+                        <li><span>4644 UC</span> <strong>38 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">💎 جواهر فري فاير (Free Fire)</div></div>
+                    <ul class="price-list">
+                        <li><span>100 Gem</span> <strong>1 JD</strong></li>
+                        <li><span>210 Gem</span> <strong>2 JD</strong></li>
+                        <li><span>530 Gem</span> <strong>4 JD</strong></li>
+                        <li><span>1080 Gem</span> <strong>7.5 JD</strong></li>
+                        <li><span>2200 Gem</span> <strong>15 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🎵 عملات تيك توك (TikTok Coins)</div></div>
+                    <ul class="price-list">
+                        <li><span>250 Coin</span> <strong>3.5 JD</strong></li>
+                        <li><span>700 Coin</span> <strong>6.5 JD</strong></li>
+                        <li><span>1400 Coin</span> <strong>13 JD</strong></li>
+                        <li><span>3500 Coin</span> <strong>30 JD</strong></li>
+                        <li><span>7000 Coin</span> <strong>58 JD</strong></li>
+                        <li><span>17500 Coin</span> <strong>144 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">🎮 بطاقات بلايستيشن ستور (PSN Cards)</div></div>
+                    <ul class="price-list">
+                        <li><span>سعودي $5 / $10 / $20 / $50 / $100</span> <strong>5 / 8 / 16 / 38 / 74 JD</strong></li>
+                        <li><span>إماراتي $5 / $10 / $20 / $25 / $50 / $100</span> <strong>5 / 7.5 / 15 / 19 / 36 / 71 JD</strong></li>
+                        <li><span>أمريكي $5 / $10 / $20 / $25 / $50 / $100</span> <strong>5 / 7.5 / 15 / 19 / 36 / 71 JD</strong></li>
+                        <li><span>بريطاني 5£ / 10£ / 20£ / 25£ / 50£</span> <strong>5.5 / 11 / 21 / 26 / 49 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">➕ اشتراكات بلس أمريكي / سعودي / إماراتي</div></div>
+                    <ul class="price-list">
+                        <li><span>أساسي (شهر / 3 أشهر / سنة) - أمريكي</span> <strong>7.5 / 19 / 58 JD</strong></li>
+                        <li><span>إضافي (شهر / 3 أشهر / سنة) - أمريكي</span> <strong>15 / 30 / 97 JD</strong></li>
+                        <li><span>فاخر (شهر / 3 أشهر / سنة) - أمريكي</span> <strong>15 / 36 / 113 JD</strong></li>
+                        <li><span>سعودي (أساسي / إضافي / فاخر - سنة)</span> <strong>53 / 82 / 97 JD</strong></li>
+                        <li><span>إماراتي (أساسي / إضافي / فاخر - سنة)</span> <strong>50 / 78 / 93 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="card-header"><div class="card-title">⚔️ العاب السوبرسيل (Supercell)</div></div>
+                    <ul class="price-list">
+                        <li><span>براول ستارز (براول باس بلس)</span> <strong>7.50 JD</strong></li>
+                        <li><span>جواهر براول ستارز (33 / 88 / 187 / 396 Gem)</span> <strong>1.5 / 4 / 7.5 / 14.5 JD</strong></li>
+                        <li><span>كلاش رويال (تذكرة ذهبية / ماسية)</span> <strong>5 / 9 JD</strong></li>
+                        <li><span>كلاش أوف كلانس (تذكرة ذهبية)</span> <strong>6 JD</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" id="payment">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>💳 طرق الدفع الإلكتروني</h3>
+                <p><strong>زين كاش:</strong> 0781258255 (أحمد الشيش)</p>
+                <p><strong>أورنج ماني:</strong> 0781258255 (أحمد الشيش)</p>
+                <p><strong>أمنية وليت:</strong> 0787740412 (زياد الشيش)</p>
+                <p><strong>كليك (CliQ):</strong> sheshko (بنك الاتحاد - أحمد الشيش)</p>
+            </div>
+
+            <div class="info-card" id="delivery">
+                <h3>🚚 خدمة التوصيل كاش</h3>
+                <p>توصيل لجميع أنحاء المملكة كاش عند الاستلام:</p>
+                <p>عمان / الزرقاء / العقبة / إربد: <strong>2 - 3 دنانير</strong></p>
+                <p>قرى إربد والمناطق البعيدة: <strong>5 دنانير</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>📱 للتواصل المباشر عبر الواتساب: <strong>0781258255</strong> | الإنستغرام والثريدز: <strong>@shopping_king3</strong></p>
+        <p>جميع الحقوق محفوظة لمتجر <strong>SHOPPING KING3</strong> &copy; 2026</p>
+    </footer>
+
+    <script>
+        const packagesData = {
+            Roblox: [
+                "500 Robux - 5 JD",
+                "1000 Robux - 8 JD",
+                "2100 Robux - 16 JD",
+                "2650 Robux - 20 JD",
+                "5400 Robux - 37 JD",
+                "6800 Robux - 45 JD",
+                "11200 Robux - 70 JD",
+                "13100 Robux - 78 JD"
+            ],
+            FortniteVB: [
+                "1000 VB - 5.50 JD",
+                "2800 VB - 14 JD",
+                "5000 VB - 20 JD",
+                "7800 VB - 33 JD",
+                "10000 VB - 40 JD",
+                "13500 VB - 46 JD"
+            ],
+            FortniteGifts: [
+                "500 VB هدية - 3 JD",
+                "800 VB هدية - 4 JD",
+                "1200 VB هدية - 6 JD",
+                "1500 VB هدية - 7 JD",
+                "1800 VB هدية - 8 JD",
+                "2000 VB هدية - 9 JD",
+                "2500 VB هدية - 12 JD",
+                "باتل باس Battle Pass - 5.50 JD",
+                "حزمة الكرو Fortnite Crew - 5 JD"
+            ],
+            Valorant: [
+                "475 VP - 4 JD",
+                "1000 VP - 8 JD",
+                "2050 VP - 15 JD",
+                "3650 VP - 26 JD",
+                "5350 VP - 37 JD",
+                "11000 VP - 71 JD",
+                "14650 VP - 97 JD"
+            ],
+            PUBGGlobal: [
+                "355 UC - 4 JD",
+                "720 UC - 7.5 JD",
+                "1950 UC - 18 JD",
+                "3850 UC - 33 JD",
+                "8100 UC - 63 JD"
+            ],
+            PUBGKR: [
+                "60 UC - 1 JD",
+                "190 UC - 3 JD",
+                "660 UC - 8 JD",
+                "1800 UC - 20 JD",
+                "3850 UC - 38 JD",
+                "8100 UC - 72 JD"
+            ],
+            PUBGVN: [
+                "82 UC - 1.5 JD",
+                "194 UC - 3 JD",
+                "400 UC - 5 JD",
+                "854 UC - 9 JD",
+                "2111 UC - 21 JD",
+                "4644 UC - 38 JD"
+            ],
+            FreeFire: [
+                "100 Gem - 1 JD",
+                "210 Gem - 2 JD",
+                "530 Gem - 4 JD",
+                "1080 Gem - 7.5 JD",
+                "2200 Gem - 15 JD"
+            ],
+            TikTok: [
+                "250 Coin - 3.5 JD",
+                "700 Coin - 6.5 JD",
+                "1400 Coin - 13 JD",
+                "3500 Coin - 30 JD",
+                "7000 Coin - 58 JD",
+                "17500 Coin - 144 JD"
+            ],
+            Genshin: [
+                "Welkin Moon - 3.5 JD",
+                "330 GC - 3.5 JD",
+                "1090 GC - 10 JD",
+                "1920 GC - 21 JD",
+                "3880 GC - 34 JD",
+                "8080 GC - 68 JD"
+            ],
+            MarvelRivals: [
+                "100 Lattice - 1 JD",
+                "Luxury Battle Pass - 4 JD",
+                "500 Lattice - 4 JD",
+                "1000 Lattice - 6.50 JD",
+                "Luxury Battle Pass Extra - 7.50 JD",
+                "2180 Lattice - 12.50 JD",
+                "5680 Lattice - 33 JD",
+                "11680 Lattice - 65 JD"
+            ],
+            PSN_SA: [
+                "5$ - 5 JD",
+                "10$ - 8 JD",
+                "20$ - 16 JD",
+                "50$ - 38 JD",
+                "100$ - 74 JD"
+            ],
+            PSN_AE: [
+                "5$ - 5 JD",
+                "10$ - 7.5 JD",
+                "20$ - 15 JD",
+                "25$ - 19 JD",
+                "50$ - 36 JD",
+                "100$ - 71 JD"
+            ],
+            PSN_US: [
+                "5$ - 5 JD",
+                "10$ - 7.5 JD",
+                "20$ - 15 JD",
+                "25$ - 19 JD",
+                "50$ - 36 JD",
+                "100$ - 71 JD"
+            ],
+            PSN_UK: [
+                "5£ - 5.5 JD",
+                "10£ - 11 JD",
+                "20£ - 21 JD",
+                "25£ - 26 JD",
+                "50£ - 49 JD"
+            ],
+            PSPlus_US: [
+                "أساسي (شهر) - 7.5 JD",
+                "إضافي (شهر) - 15 JD",
+                "فاخر (شهر) - 15 JD",
+                "أساسي (3 أشهر) - 19 JD",
+                "إضافي (3 أشهر) - 30 JD",
+                "فاخر (3 أشهر) - 36 JD",
+                "أساسي (سنة) - 58 JD",
+                "إضافي (سنة) - 97 JD",
+                "فاخر (سنة) - 113 JD"
+            ],
+            iTunes_US: [
+                "5$ - 4.5 JD",
+                "10$ - 8 JD",
+                "20$ - 15.5 JD",
+                "50$ - 37 JD",
+                "100$ - 72 JD"
+            ]
+        };
+
+        function updatePackages() {
+            const game = document.getElementById("gameSelect").value;
+            const packageSelect = document.getElementById("packageSelect");
+            packageSelect.innerHTML = "";
+
+            if (game && packagesData[game]) {
+                packagesData[game].forEach(pkg => {
+                    const opt = document.createElement("option");
+                    opt.value = pkg;
+                    opt.innerText = pkg;
+                    packageSelect.appendChild(opt);
+                });
+            } else {
+                const opt = document.createElement("option");
+                opt.value = "";
+                opt.innerText = "-- اختر الخدمة أولاً --";
+                packageSelect.appendChild(opt);
+            }
+        }
+
+        function sendWhatsAppOrder() {
+            const gameSelect = document.getElementById("gameSelect");
+            const gameName = gameSelect.options[gameSelect.selectedIndex]?.text || "";
+            const pkg = document.getElementById("packageSelect").value;
+            const accountId = document.getElementById("accountId").value;
+
+            if (!gameSelect.value || !pkg) {
+                alert("يرجى اختيار الخدمة والفئة المطلوبة أولاً!");
+                return;
+            }
+
+            const message = `مرحباً متجر Shopping King 👑%0Aحابب أطلب الخدمة التالية:%0A- *الخدمة:* ${encodeURIComponent(gameName)}%0A- *الفئة/الكمية:* ${encodeURIComponent(pkg)}%0A- *معرف الحساب / ID:* ${encodeURIComponent(accountId || 'لم يتم إدخاله')}`;
+            
+            const whatsappNumber = "962781258255";
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
